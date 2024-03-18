@@ -1,7 +1,11 @@
+import os
 from sqlalchemy import Column, Integer, String, Date
 from flask_sqlalchemy import SQLAlchemy
 
-database_path = "postgresql://postgres:root@localhost:5432/casting_agency"
+database_path = os.environ['DATABASE_URL']
+if database_path.startswith("postgres://"):
+    database_path = database_path.replace("postgres://", "postgresql://", 1)
+
 
 db = SQLAlchemy()
 
