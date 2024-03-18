@@ -18,3 +18,4 @@ python-editor
 six
 SQLAlchemy
 Werkzeug
+python-jose
