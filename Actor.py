@@ -1,4 +1,4 @@
-from flask import jsonify, request
+from flask import abort, jsonify, request
 from database.models import Actor
 
 
@@ -20,9 +20,7 @@ def select_actor():
         return jsonify(response), 200
 
     except Exception as e:
-        print(e)
-        return jsonify(
-            {'success': False, 'error': 'Failed to retrieve Actors'}), 500
+        abort(401)
 
 
 def select_actor_detail(actor_id):
@@ -43,9 +41,7 @@ def select_actor_detail(actor_id):
         return jsonify(response), 200
 
     except Exception as e:
-        print(e)
-        return jsonify(
-            {'success': False, 'error': 'Failed to retrieve Actor'}), 500
+        abort(401)
 
 
 def insert_actor():
@@ -67,9 +63,7 @@ def insert_actor():
         return jsonify(response), 201
 
     except Exception as e:
-        print(e)
-        return jsonify(
-            {'success': False, 'error': 'Failed to add actor'}), 500
+        abort(400)
 
 
 def patch_actor(actor_id):
@@ -77,8 +71,7 @@ def patch_actor(actor_id):
         actor = Actor.query.get(actor_id)
 
         if not actor:
-            return jsonify(
-                {'success': False, 'error': 'Actor Not Found'}), 404
+            abort(404)
 
         update_data = request.json
         name = update_data['name']
@@ -95,10 +88,7 @@ def patch_actor(actor_id):
         return jsonify(response), 201
 
     except Exception as e:
-
-        print(e)
-        return jsonify(
-            {'success': False, 'error': 'Failed to update actor'}), 500
+        abort(422)
 
 
 def delete_actor(actor_id):
@@ -107,8 +97,7 @@ def delete_actor(actor_id):
         actor = Actor.query.get(actor_id)
 
         if not actor:
-            return jsonify(
-                {'success': False, 'error': 'Actor Not Found'}), 404
+            abort(404)
 
         Actor.delete(actor)
 
@@ -120,7 +109,4 @@ def delete_actor(actor_id):
         return jsonify(response), 201
 
     except Exception as e:
-
-        print(e)
-        return jsonify(
-            {'success': False, 'error': 'Failed to update actor'}), 500
+        abort(422)

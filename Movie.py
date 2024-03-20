@@ -1,4 +1,4 @@
-from flask import jsonify, request
+from flask import abort, jsonify, request
 from database.models import Movie
 
 
@@ -19,9 +19,7 @@ def select_movie():
         return jsonify(response), 200
 
     except Exception as e:
-        print(e)
-        return jsonify(
-            {'success': False, 'error': 'Failed to retrieve Movies'}), 500
+        abort(401)
 
 
 def select_movie_detail(movie_id):
@@ -29,8 +27,7 @@ def select_movie_detail(movie_id):
         movie = Movie.query.get(movie_id)
 
         if not movie:
-            return jsonify(
-                {'success': False, 'error': 'Movie Not Found'}), 404
+            abort(404)
 
         response = {
             'success': True,
@@ -41,9 +38,7 @@ def select_movie_detail(movie_id):
         return jsonify(response), 200
 
     except Exception as e:
-        print(e)
-        return jsonify(
-            {'success': False, 'error': 'Failed to retrieve Movies'}), 500
+        abort(401)
 
 
 def insert_movie():
@@ -65,9 +60,7 @@ def insert_movie():
         return jsonify(response), 201
 
     except Exception as e:
-        print(e)
-        return jsonify(
-            {'success': False, 'error': 'Failed to add movie'}), 500
+        abort(422)
 
 
 def patch_movie(movie_id):
@@ -75,8 +68,7 @@ def patch_movie(movie_id):
         movie = Movie.query.get(movie_id)
 
         if not movie:
-            return jsonify(
-                {'success': False, 'error': 'Movie Not Found'}), 404
+            abort(404)
 
         upadted_date = request.json
         title = upadted_date['title']
@@ -92,9 +84,7 @@ def patch_movie(movie_id):
         return jsonify(response), 201
 
     except Exception as e:
-        print(e)
-        return jsonify(
-            {'success': False, 'error': 'Failed to update movie'}), 500
+        abort(422)
 
 
 def delete_movie(movie_id):
@@ -102,8 +92,7 @@ def delete_movie(movie_id):
         movie = Movie.query.get(movie_id)
 
         if not movie:
-            return jsonify(
-                {'success': False, 'error': 'Movie Not Found'}), 404
+            abort(404)
 
         Movie.delete(movie)
 
@@ -115,6 +104,4 @@ def delete_movie(movie_id):
         return jsonify(response), 201
 
     except Exception as e:
-        print(e)
-        return jsonify(
-            {'success': False, 'error': 'Failed to delete movie'}), 500
+        abort(422)
