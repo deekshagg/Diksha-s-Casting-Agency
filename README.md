@@ -153,3 +153,5 @@ Attached `casting-agency apis` file
 -----------------------------------------------------
     Note 
     -  `The collection contains the fresh jwt token`
+
+    - Open `'.env'` to see sensitive information
