@@ -1,10 +1,41 @@
-# Casting Agency Backend
+<img src="https://i.pinimg.com/736x/ff/3d/ac/ff3dacf36806047a53e7582bbee93cd4.jpg" alt="OpenAI Logo" width="420" height="220">
+
+
+# Diksha's Casting Agency Backend
+
+## Overview
+
+   - This Application is for a casting agency to organise Movies and Actors Database
+   - Features 
+      - The Users for this application are Casting Assitant, Casting Director and Executive Producer
+      - The Application has end points:
+      ------------------------------------
+         - GET /movies
+         - GET /actors
+         - GET /movies/id
+         - GET /actors/id
+      ------------------------------------
+         - POST /movies
+         - POST /actors
+      ------------------------------------
+         - PATCH /movies/id
+         - PATCH /actors/id
+      ------------------------------------
+         - DELETE /movies/id
+         - DELETE /actors/id
+
 
 ## Getting Started
 
-### Installing Dependencies
+### Prerequisite
 
-#### Python 3.7
+   - Tools
+      - Postman
+
+------------------------------------------------------
+
+
+#### Python 3.9
 
 Follow instructions to install the latest version of python for your platform in the [python docs](https://docs.python.org/3/using/unix.html#getting-and-installing-the-latest-version-of-python)
 
@@ -60,16 +91,41 @@ The `--reload` flag will detect file changes and restart the server automaticall
      - Enable RBAC
      - Enable Add Permissions in the Access Token
 5. Create new API permissions:
-   - `get:drinks`
-   - `get:drinks-detail`
-   - `post:drinks`
-   - `patch:drinks`
-   - `delete:drinks`
+   ---------------------------
+   - `get:movies`
+   - `post:movies`
+   - `patch:movies`
+   - `delete:movies`
+   ---------------------------
+   - `get:actors`
+   - `post:actors`
+   - `patch:actors`
+   - `delete:actors`
 6. Create new roles for:
-   - Barista
-     - can `get:drinks-detail`
-     - can `get:drinks`
-   - Manager
+
+   - Casting Assitant
+
+      - `get:actors`
+      - `get:movies`
+
+   - Casting Director
+   
+      - `get:actors`
+      - `get:movies`
+      - `post:actors`
+      - `patch:actors`
+      - `patch:movies`
+      - `delete:actors`
+   
+   - Executive Producer
+      - `get:movies`
+      - `post:movies`
+      - `patch:movies`
+      - `delete:movies`
+      - `get:actors`
+      - `post:actors`
+      - `patch:actors`
+      - `delete:actors`
      - can perform all actions
 7. Test your endpoints with [Postman](https://getpostman.com).
    - Register 2 users - assign the Barista role to one and Manager role to the other.
@@ -85,3 +141,22 @@ There are `@TODO` comments throughout the `./backend/src`. We recommend tackling
 
 1. `./src/auth/auth.py`
 2. `./src/api.py`
+
+
+## Render steps
+   - Connect your Repository with Render 
+   - Create a web service and deploy it with the repositroy connect and add DATABASE_URL
+
+
+
+
+### Deployment Link for the Application : [Diksha's Casting Agency](https://render-cloud-example-ymr0.onrender.com)
+
+
+## TEST and Post-Man collection
+
+Attached `casting-agency apis` file 
+   - Upload it in post man and run the requests 
+-----------------------------------------------------
+    Note 
+    -  `The collection contains the fresh jwt token`
