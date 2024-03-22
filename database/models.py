@@ -4,12 +4,12 @@ from flask_sqlalchemy import SQLAlchemy
 
 from settings import DB_NAME, DB_PASSWORD, DB_URI, DB_USER
 
-# database_path = os.environ['DATABASE_URL']
-# if database_path.startswith("postgres://"):
-#     database_path = database_path.replace("postgres://", "postgresql://", 1)
+database_path = os.environ['DATABASE_URL']
+if database_path.startswith("postgres://"):
+    database_path = database_path.replace("postgres://", "postgresql://", 1)
 
-database_path = 'postgresql://{}:{}@{}/{}'.format(
-    DB_USER, DB_PASSWORD, DB_URI, DB_NAME)
+# database_path = 'postgresql://{}:{}@{}/{}'.format(
+#     DB_USER, DB_PASSWORD, DB_URI, DB_NAME)
 
 db = SQLAlchemy()
 
