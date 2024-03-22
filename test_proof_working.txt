@@ -1,0 +1,23 @@
+
+C:\Users\mayan\Documents\Udacity\casting_agency>C:/Users/mayan/AppData/Local/Programs/Python/Python39/python.exe c:/Users/mayan/Documents/Udacity/casting_agency/test.py
+c:\Users\mayan\Documents\Udacity\casting_agency\Actor.py:97: LegacyAPIWarning: The Query.get() method is considered legacy as of the 1.x series of SQLAlchemy and becomes a legacy construct in 2.0. The method is now available as Session.get() (deprecated since: 2.0) (Background on SQLAlchemy 2.0 at: https://sqlalche.me/e/b8d9)   
+  actor = Actor.query.get(actor_id)
+.c:\Users\mayan\Documents\Udacity\casting_agency\Movie.py:92: LegacyAPIWarning: The Query.get() method is considered legacy as of the 1.x series of SQLAlchemy and becomes a legacy construct in 2.0. The method is now available as Session.get() (deprecated since: 2.0) (Background on SQLAlchemy 2.0 at: https://sqlalche.me/e/b8d9)  
+  movie = Movie.query.get(movie_id)
+.<WrapperTestResponse streamed [200 OK]>
+b'{"Actors":[{"age":40,"gender":"Female","id":2,"name":"Updated Actor Name"}],"success":true}\n'
+.<WrapperTestResponse streamed [401 UNAUTHORIZED]>
+.<WrapperTestResponse streamed [200 OK]>
+b'{"Movies":[{"id":4,"release_date":"2024-03-23","title":"Udacity"},{"id":5,"release_date":"2024-03-23","title":"Udacity"},{"id":6,"release_date":"2024-03-23","title":"Udacity"},{"id":7,"release_date":"2024-03-23","title":"Udacity"},{"id":3,"release_date":"2022-01-01","title":"Updated Movie Title"}],"success":true}\n'
+.<WrapperTestResponse streamed [401 UNAUTHORIZED]>
+.<WrapperTestResponse streamed [201 CREATED]>
+.<WrapperTestResponse streamed [201 CREATED]>
+.c:\Users\mayan\Documents\Udacity\casting_agency\Actor.py:71: LegacyAPIWarning: The Query.get() method is considered legacy as of the 1.x series of SQLAlchemy and becomes a legacy construct in 2.0. The method is now available as Session.get() (deprecated since: 2.0) (Background on SQLAlchemy 2.0 at: https://sqlalche.me/e/b8d9)  
+  actor = Actor.query.get(actor_id)
+.c:\Users\mayan\Documents\Udacity\casting_agency\Movie.py:68: LegacyAPIWarning: The Query.get() method is considered legacy as of the 1.x series of SQLAlchemy and becomes a legacy construct in 2.0. The method is now available as Session.get() (deprecated since: 2.0) (Background on SQLAlchemy 2.0 at: https://sqlalche.me/e/b8d9)  
+  movie = Movie.query.get(movie_id)
+.
+----------------------------------------------------------------------
+Ran 10 tests in 2.141s
+
+OK

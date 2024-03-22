@@ -22,12 +22,12 @@ def not_found_error(error):
 
 
 @app.errorhandler(401)
-def not_found_error(error):
+def unauthorised(error):
     return jsonify({
         "success": False,
         "error": 401,
         "message": "UnAuthorised"
-    }), 404
+    }), 401
 
 
 @app.errorhandler(AuthError)

@@ -2,18 +2,23 @@ import os
 from sqlalchemy import Column, Integer, String, Date
 from flask_sqlalchemy import SQLAlchemy
 
-database_path = os.environ['DATABASE_URL']
-if database_path.startswith("postgres://"):
-    database_path = database_path.replace("postgres://", "postgresql://", 1)
+from settings import DB_NAME, DB_PASSWORD, DB_URI, DB_USER
+
+# database_path = os.environ['DATABASE_URL']
+# if database_path.startswith("postgres://"):
+#     database_path = database_path.replace("postgres://", "postgresql://", 1)
+
+database_path = 'postgresql://{}:{}@{}/{}'.format(
+    DB_USER, DB_PASSWORD, DB_URI, DB_NAME)
 
 db = SQLAlchemy()
 
-def setup_db(app):
+def setup_db(app, database_path=database_path):
+    app.config["SQLALCHEMY_DATABASE_URI"] = database_path
+    app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+    db.app = app
+    db.init_app(app)
     with app.app_context():
-        app.config["SQLALCHEMY_DATABASE_URI"] = database_path
-        app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-        db.app = app
-        db.init_app(app)
         db.create_all()
 
 

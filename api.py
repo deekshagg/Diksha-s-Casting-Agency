@@ -7,11 +7,13 @@ from auth.auth import requires_auth
 from database.models import Actor, Movie, setup_db
 
 
-def create_app(test_config=None):
+def create_app(active=True, test_config=None):
 
     app = Flask(__name__)
 
-    setup_db(app)
+    with app.app_context():
+        if active:
+            setup_db(app)
 
     CORS(app)
 
